@@ -1,0 +1,21 @@
+services:
+  api:
+    environment:
+      SEEK_ENV: production
+    ports: !override
+      - "127.0.0.1:${SEEK_API_PORT:-35050}:5050"
+  worker:
+    environment:
+      SEEK_ENV: production
+  sandbox-runner:
+    environment:
+      SEEK_ENV: production
+      SANDBOX_CONTAINER_IMAGE_DIGEST: ${SANDBOX_CONTAINER_IMAGE_DIGEST:?Set a fixed sandbox image digest}
+  frontend:
+    build:
+      target: production
+    volumes: !reset []
+    environment: !reset {}
+    command: !reset []
+    ports: !override
+      - "${SEEK_FRONTEND_PORT:-35173}:80"

@@ -1,0 +1,62 @@
+.ant-btn.seek-refresh-button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  &:hover:not(:disabled) {
+    background: var(--gray-25);
+  }
+}
+
+.ant-btn.seek-table-action {
+  width: 26px;
+  height: 26px;
+  padding: 0;
+
+  &:not(:disabled) {
+    color: var(--gray-400);
+  }
+
+  &:hover:not(:disabled) {
+    background: var(--gray-100);
+    color: var(--gray-800);
+  }
+
+  &.ant-btn-dangerous:hover:not(:disabled) {
+    background: var(--color-error-50);
+    color: var(--color-error-500);
+  }
+}
+
+.seek-rotate,
+.page-shoulder .page-shoulder-refresh-icon.is-spinning {
+  animation: seek-rotate 1s linear infinite;
+}
+
+@keyframes seek-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seek-rotate,
+  .page-shoulder .page-shoulder-refresh-icon.is-spinning {
+    animation: none;
+  }
+}
+
+.seek-form-help,
+.seek-form-error {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.seek-form-help {
+  color: var(--gray-600);
+}
+
+.seek-form-error {
+  color: var(--color-error-500);
+}

@@ -1,0 +1,9 @@
+branding:
+  name: Seek
+  logo: /favicon.svg
+  title: 从研究问题，到有来源的报告
+  login_bg: /login-bg.svg
+footer:
+  copyright: "Seek · AI 技术情报研究 · v{{SEEK_VERSION}}"
+  user_agreement_url: /protocols/user-agreement.template.html
+  privacy_policy_url: /protocols/privacy-policy.template.html

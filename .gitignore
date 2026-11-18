@@ -1,0 +1,71 @@
+# Local tools and private workspace state
+.git/
+.agents/
+.aws/
+.codex/
+.claude/
+.cursor/
+.idea/
+.vscode/
+.opencode/
+.seek/
+.playwright*/
+*.code-workspace
+.DS_Store
+._*
+
+# Python dependencies, caches and build output
+**/__pycache__/
+*.py[cod]
+**/.venv/
+**/venv/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+*.egg-info/
+**/build/
+**/dist/
+
+# Node dependencies and generated documentation
+**/node_modules/
+**/.pnpm-store/
+**/.vitepress/cache/
+**/.vitepress/dist/
+*.tsbuildinfo
+
+# Runtime data, local backups and temporary files
+docker/volumes/
+docker_images_backup/
+docs/vibe/
+**/.cache/
+**/tmp/
+**/temp/
+**/log/
+**/logs/
+*.log
+*.log.*
+*.tmp
+*.bak
+*.backup
+*.db
+*.sqlite*
+
+# Private environment files; public templates remain included
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.template
+!**/.env.template
+
+# Private keys and credentials
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.secret
+*.secret.*
+*_private
+*.private

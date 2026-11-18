@@ -1,0 +1,4 @@
+recursive-include seek/modules/system/static *.txt *.yaml
+recursive-include seek/modules/extensions/skills *.md
+graft seek/modules/extensions/skills/builtin
+global-exclude *.py[cod]

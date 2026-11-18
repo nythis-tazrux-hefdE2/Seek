@@ -1,0 +1,53 @@
+import {
+  CirclePlus,
+  Clock,
+  FileCheck,
+  Network,
+  Send,
+  Square,
+  Calculator,
+  FileEdit,
+  FilePen,
+  FileText,
+  Folder,
+  FolderOutput,
+  FolderSearch,
+  Globe,
+  HelpCircle,
+  SquareTerminal
+} from '@lucide/vue'
+
+export const TOOL_ICON_MAP = {
+  ask_user_question: HelpCircle,
+  create_session: CirclePlus,
+  send_message: Send,
+  submit_input: Send,
+  cancel_turn: Square,
+  wait_sessions: Clock,
+  wait_inputs: Clock,
+  get_result: FileCheck,
+  list_sessions: Network,
+  bash: SquareTerminal,
+  calculator: Calculator,
+  cmd: SquareTerminal,
+  edit_file: FilePen,
+  execute: SquareTerminal,
+  glob: FolderSearch,
+  grep: FolderSearch,
+  list_directory: Folder,
+  ls: Folder,
+  ocr_parse_file: FileText,
+  present_artifacts: FolderOutput,
+  read_file: FileText,
+  replace: FilePen,
+  run_shell_command: SquareTerminal,
+  search_file: FolderSearch,
+  search_file_content: FolderSearch,
+  web_search: Globe,
+  web_fetch: Globe,
+  tavily_search: Globe,
+  doubao_search: Globe,
+  write_file: FileEdit
+}
+
+export const getToolIcon = (toolId) => TOOL_ICON_MAP[toolId] || null

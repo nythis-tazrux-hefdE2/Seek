@@ -1,0 +1,108 @@
+<template>
+  <component
+    :is="currentRenderer"
+    v-if="currentRenderer"
+    :tool-call="toolCall"
+    v-bind="cooperationView && toolId in COOPERATION_ACTIONS ? { cooperationView } : {}"
+    :appearance="appearance"
+    :default-expanded="defaultExpanded"
+    ref="toolRendererRef"
+  />
+  <BaseToolCall
+    v-else-if="!isHidden"
+    :tool-call="toolCall"
+    :appearance="appearance"
+    :default-expanded="defaultExpanded"
+  />
+</template>
+
+<script setup>
+import { computed, defineAsyncComponent, ref } from 'vue'
+import BaseToolCall from './BaseToolCall.vue'
+import ToolRendererUnavailable from './ToolRendererUnavailable.vue'
+import { COOPERATION_ACTIONS } from '@/modules/session/model/cooperationToolView'
+import { getToolCallId, isHiddenToolCall } from './toolRegistry'
+
+const createRenderer = (loader) => defineAsyncComponent({
+  loader,
+  loadingComponent: BaseToolCall,
+  errorComponent: ToolRendererUnavailable,
+  delay: 0,
+  timeout: 10000,
+  suspensible: false
+})
+
+const CooperationTool = createRenderer(() => import('./renderers/CooperationTool.vue'))
+const WebSearchTool = createRenderer(() => import('./renderers/WebSearchTool.vue'))
+const WebFetchTool = createRenderer(() => import('./renderers/WebFetchTool.vue'))
+const CalculatorTool = createRenderer(() => import('./renderers/CalculatorTool.vue'))
+const WriteFileTool = createRenderer(() => import('./renderers/WriteFileTool.vue'))
+const ReadFileTool = createRenderer(() => import('./renderers/ReadFileTool.vue'))
+const ListDirectoryTool = createRenderer(() => import('./renderers/ListDirectoryTool.vue'))
+const SearchFileContentTool = createRenderer(() => import('./renderers/SearchFileContentTool.vue'))
+const GrepTool = createRenderer(() => import('./renderers/GrepTool.vue'))
+const GlobTool = createRenderer(() => import('./renderers/GlobTool.vue'))
+const EditFileTool = createRenderer(() => import('./renderers/EditFileTool.vue'))
+const AskUserQuestionTool = createRenderer(() => import('./renderers/AskUserQuestionTool.vue'))
+const ExecuteTool = createRenderer(() => import('./renderers/ExecuteTool.vue'))
+const OcrParseFileTool = createRenderer(() => import('./renderers/OcrParseFileTool.vue'))
+
+const props = defineProps({
+  cooperationView: { type: Object, default: null },
+  toolCall: {
+    type: Object,
+    required: true
+  },
+  appearance: {
+    type: String,
+    default: 'card'
+  },
+  defaultExpanded: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const toolId = computed(() => getToolCallId(props.toolCall))
+
+const TOOL_RENDERERS = {
+  ask_user_question: AskUserQuestionTool,
+  bash: ExecuteTool,
+  calculator: CalculatorTool,
+  cmd: ExecuteTool,
+  edit_file: EditFileTool,
+  execute: ExecuteTool,
+  glob: GlobTool,
+  grep: GrepTool,
+  list_directory: ListDirectoryTool,
+  ls: ListDirectoryTool,
+  ocr_parse_file: OcrParseFileTool,
+  read_file: ReadFileTool,
+  replace: EditFileTool,
+  run_shell_command: ExecuteTool,
+  search_file_content: SearchFileContentTool,
+  web_search: WebSearchTool,
+  web_fetch: WebFetchTool,
+  tavily_search: WebSearchTool,
+  doubao_search: WebSearchTool,
+  write_file: WriteFileTool
+}
+
+const currentRenderer = computed(() =>
+  props.cooperationView && toolId.value in COOPERATION_ACTIONS
+    ? CooperationTool
+    : TOOL_RENDERERS[toolId.value] || null
+)
+const isHidden = computed(() => isHiddenToolCall(props.toolCall))
+
+const toolRendererRef = ref(null)
+const refreshGraph = () => {
+  if (toolRendererRef.value && typeof toolRendererRef.value.refreshGraph === 'function') {
+    toolRendererRef.value.refreshGraph()
+  }
+}
+
+defineExpose({ refreshGraph })
+</script>
+
+<style lang="less" scoped></style>

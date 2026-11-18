@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1360" fill="none">
+  <title>Seek research background</title>
+  <desc>Seek original geometric background, MIT License.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="960" y2="1360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#edf3f6"/><stop offset="1" stop-color="#d8e5eb"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#paper)" d="M0 0h960v1360H0z"/>
+  <g stroke="#849eac" stroke-width="1.5" opacity=".38">
+    <path d="M-120 1020C120 660 300 1100 550 750S920 400 1100 650"/>
+    <path d="M-120 1080C120 720 300 1160 550 810S920 460 1100 710"/>
+    <path d="M-120 1140C120 780 300 1220 550 870S920 520 1100 770"/>
+    <path d="M-120 1200C120 840 300 1280 550 930S920 580 1100 830"/>
+    <path d="M-120 1260C120 900 300 1340 550 990S920 640 1100 890"/>
+  </g>
+  <g stroke="#28618a" opacity=".35" stroke-width="3">
+    <circle cx="570" cy="440" r="145"/>
+    <circle cx="570" cy="440" r="171" stroke-width="1"/>
+    <path d="m675 545 128 128M500 415h140M500 457h104"/>
+  </g>
+  <g fill="#28618a" opacity=".26">
+    <circle cx="205" cy="328" r="4"/><circle cx="770" cy="870" r="4"/>
+    <circle cx="300" cy="1110" r="4"/>
+  </g>
+</svg>
