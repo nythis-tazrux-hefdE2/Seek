@@ -43,8 +43,6 @@ curl --fail http://localhost:35050/api/system/ready
 
 过程视图展示子任务和工具调用。正式报告卡片支持 HTML 预览与下载；修改过的报告不能沿用原检查结果。操作步骤和报告边界见[研究使用说明](docs/research.md)。
 
-默认产品聚焦技术研究；知识库、图谱、定时任务和通用扩展管理不属于运行能力。PDF/OCR 和远端 Langfuse 为可选配置。默认 Compose 面向本地运行，公网部署需自行配置入口、HTTPS、访问范围、备份及协议模板。
-
 ## 许可证与来源
 
 代码采用 [MIT License](LICENSE)。来源基线、保留的版权及改造范围见 [UPSTREAM.md](UPSTREAM.md)。头像依赖的素材声明见[第三方头像许可](frontend/public/avatar-licenses.txt)。
